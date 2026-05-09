@@ -1,0 +1,23 @@
+# 🚔 Redesign Delegacia Eletrônica - UX de Alta Fidelidade
+ ## 📝 Descrição do Projeto
+Este projeto é a evolução de um diagnóstico de interface crítica, transformando a **Delegacia Eletrônica** em um sistema mais humano e eficiente. O foco central foi o **UX Emocional**, visando reduzir a revitimização do cidadão durante o registro de ocorrências sensíveis.
+
+A interface foi reconstruída com um **Design System** próprio, priorizando a resiliência de dados (autosave) e a clareza na comunicação, substituindo o "juridiquês" por uma linguagem direta e assistida.
+
+ ## 🚀 Tecnologias Utilizadas
+* **UI Design:** Figma (Prototipagem de Alta Fidelidade)
+* **Design System:** Paleta *Midnight Blue* e Tipografia *Urbanist/Inter*
+* **UX Writing:** Microcopy focado em assistência de contexto (Roubo vs. Furto)
+* **Métricas:** System Usability Scale (SUS)
+
+ ## 📊 Resultados e Aprendizados
+O protótipo alcançou melhorias drásticas em comparação ao sistema original:
+* **Eficácia:** A taxa de sucesso no preenchimento subiu de **45% para 94%**.
+* **Satisfação:** Score SUS final de **88.5** (classificado como "Excelente").
+* **UX Emocional:** Implementação de persistência híbrida (Local Storage + API), permitindo que o usuário pause o relato sem perder dados.
+
+ ## 🔧 Estrutura da Pasta
+1. `dossie_alta_fidelidade_delegacia.pdf`: Detalhamento visual e métricas de sucesso.
+
+---
+[Voltar ao início](https://github.com/seu-usuario/portfolio)
