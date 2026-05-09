@@ -1,0 +1,25 @@
+# 🏥 Projeto PETHOUSE - Gestão de Clínica Veterinária
+ ## 📝 Descrição do Projeto
+Este projeto faz parte da disciplina de **Prototipagem de Sistemas Computacionais** e foca na estruturação completa de um sistema para clínicas veterinárias de bairro. O trabalho abrange desde a visão estratégica do produto até a modelagem detalhada de processos de negócio.
+
+O objetivo principal foi resolver gargalos operacionais, como o controle de estoque e o fluxo de atendimento, utilizando uma abordagem de **Engenharia de Requisitos** para garantir que todas as necessidades dos stakeholders (recepcionistas, veterinários e gestores) fossem atendidas.
+
+ ## 🚀 Tecnologias e Metodologias Utilizadas
+* **Modelagem de Processos:** BPMN 2.0 (Bizagi/Miro)
+* **Engenharia de Requisitos:** Backlog de Requisitos Funcionais (RF) e Não Funcionais (RNF)
+* **Análise de Negócio:** Matriz de Stakeholders e Jornada do Usuário (AS-IS)
+* **Ferramentas:** Pacote Office, Miro
+
+ ## 📊 Resultados e Aprendizados
+O projeto resultou em uma arquitetura de processos robusta e pronta para ser desenvolvida.
+* **Mapeamento Completo:** Modelagem de um fluxo de controle de estoque com 38 etapas numeradas e 9 gateways exclusivos.
+* **Resiliência de Processo:** Implementação de caminhos de cancelamento explícitos e tratativas de exceção para produtos não cadastrados ou sem saldo.
+* **Visão Estratégica:** Aprendi a identificar o impacto de cada stakeholder no sucesso do software através da matriz de influência/interesse.
+
+ ## 🔧 Estrutura da Pasta
+1. `matriz_stakeholders.pdf`: Documentação de visão e requisitos.
+2. `fluxo_bpmn.png`: Diagrama do processo de controle de estoque.
+
+---
+[Voltar ao início](https://github.com/seu-usuario/portfolio)
+
