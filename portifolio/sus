@@ -1,0 +1,22 @@
+# 🏥 Redesign Meu SUS Digital - Auditoria de Acessibilidade
+ ## 📝 Descrição do Projeto
+Este dossiê técnico apresenta um diagnóstico profundo e uma proposta de redesign para o aplicativo **Meu SUS Digital**, realizado dentro da disciplina de **Redesign de Sistemas Críticos**. 
+
+O foco foi a **acessibilidade digital**, identificando pontos de atrito como "loadings infinitos" e terminologias técnicas que dificultam o acesso do cidadão leigo à saúde. O projeto propõe uma interface que segue rigorosamente os padrões de design inclusivo.
+
+ ## 🚀 Tecnologias Utilizadas
+* **Normas de Acessibilidade:** WCAG 2.1 AA (Web Content Accessibility Guidelines)
+* **Componentização:** ARIA-aware components para leitores de tela
+* **UX Research:** Testes de guerrilha e análise de carga cognitiva
+* **Ferramentas:** Figma, Dossiê Técnico de Diagnóstico
+
+ ## 📊 Resultados e Aprendizados
+* **Conformidade Técnica:** Implementação de labels e roles definidos para 100% dos elementos de formulário.
+* **Contraste:** Garantia de razão mínima de contraste de **4.5:1**, assegurando leitura para usuários com baixa visão.
+* **UX Semântica:** Aprendi a transformar formulários estáticos em componentes navegáveis via teclado, eliminando barreiras para usuários PCD.
+
+ ## 🔧 Estrutura da Pasta
+1. `dossie_diagnostico_sus.pdf`: Análise detalhada de falhas e plano de execução.
+
+---
+[Voltar ao início](https://github.com/seu-usuario/portfolio)
