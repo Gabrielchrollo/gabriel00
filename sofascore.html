@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofascore Clone</title>
+    <style>
+        :root {
+            --primary-blue: #374DF5;
+            --dark-blue: #1C2331;
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-main: #111111;
+            --text-muted: #888888;
+            --live-red: #E1251B;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Nav Tabs */
+        .tabs {
+            display: flex;
+            background-color: var(--dark-blue);
+            overflow-x: auto;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Match Card */
+        .match-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .time-status {
+            width: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .time-status.live {
+            color: var(--live-red);
+        }
+
+        .teams {
+            flex: 1;
+            padding: 0 1rem;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .scorers {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .score-column {
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Sofascore Clone
+    </header>
+
+    <nav class="tabs">
+        <div class="tab active" onclick="filterMatches('all')">Todos</div>
+        <div class="tab" onclick="filterMatches('live')">AO VIVO</div>
+        <div class="tab" onclick="filterMatches('finished')">Encerrados</div>
+    </nav>
+
+    <main class="container" id="match-list">
+        <!-- Os cards serão injetados aqui via JavaScript -->
+    </main>
+
+    <script>
+        // Lógica de Negócio: Banco de Dados Simulado
+        const matches = [
+            {
+                id: 1,
+                status: 'live',
+                time: "45'",
+                homeTeam: "Brasil Lendas",
+                awayTeam: "Mundo XI",
+                homeScore: 2,
+                awayScore: 1,
+                homeScorers: "Ronaldo Fenômeno 12', Kaká 41'",
+                awayScorers: "Zidane 33'"
+            },
+            {
+                id: 2,
+                status: 'live',
+                time: "78'",
+                homeTeam: "Al Hilal",
+                awayTeam: "Al-Nassr",
+                homeScore: 1,
+                awayScore: 0,
+                homeScorers: "Neymar 65' (P)",
+                awayScorers: ""
+            },
+            {
+                id: 3,
+                status: 'finished',
+                time: "FT",
+                homeTeam: "São Paulo",
+                awayTeam: "Palmeiras",
+                homeScore: 0,
+                awayScore: 0,
+                homeScorers: "",
+                awayScorers: ""
+            }
+        ];
+
+        // Lógica de Renderização (A UI do App)
+        function renderMatches(filter) {
+            const container = document.getElementById('match-list');
+            container.innerHTML = ''; // Limpa a lista atual
+
+            const filteredMatches = matches.filter(match => {
+                if (filter === 'all') return true;
+                return match.status === filter;
+            });
+
+            filteredMatches.forEach(match => {
+                const isLive = match.status === 'live';
+                const timeClass = isLive ? 'time-status live' : 'time-status';
+                
+                const card = `
+                    <div class="match-card">
+                        <div class="${timeClass}">${match.time}</div>
+                        <div class="teams">
+                            <div class="team-row">
+                                <span>${match.homeTeam}</span>
+                                <span>${match.homeScore}</span>
+                            </div>
+                            <div class="scorers">${match.homeScorers}</div>
+                            <div class="team-row" style="margin-top: 10px;">
+                                <span>${match.awayTeam}</span>
+                                <span>${match.awayScore}</span>
+                            </div>
+                            <div class="scorers">${match.awayScorers}</div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Lógica de Interação: Controle das Abas
+        function filterMatches(filter) {
+            // Atualiza o visual das abas
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Renderiza a lista filtrada
+            renderMatches(filter);
+        }
+
+        // Simulação de atualização em tempo real (Motor de "Live")
+        setInterval(() => {
+            matches.forEach(match => {
+                if (match.status === 'live') {
+                    // Simula o tempo passando removendo o apóstrofo, somando 1 e colocando de volta
+                    let currentMinute = parseInt(match.time.replace("'", ""));
+                    if (currentMinute < 90) {
+                        match.time = (currentMinute + 1) + "'";
+                    }
+                }
+            });
+            // Re-renderiza a lista ativa no momento (para atualizar o relógio)
+            const activeTab = document.querySelector('.tab.active').innerText.toLowerCase();
+            let currentFilter = 'all';
+            if(activeTab === 'ao vivo') currentFilter = 'live';
+            if(activeTab === 'encerrados') currentFilter = 'finished';
+            
+            renderMatches(currentFilter);
+        }, 60000); // Atualiza a cada 60 segundos (1 minuto)
+
+        // Inicializa o app
+        renderMatches('all');
+    </script>
+</body>
+</html>
